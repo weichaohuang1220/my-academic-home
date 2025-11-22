@@ -82,7 +82,7 @@ export const config = {
   
   // --- 联系信息 ---
   contact: {
-    text: "I am actively looking for roles in Machine Learning Engineering, especially in LLM inference & evaluation. Open to connect!",
+    text: "I am actively looking for roles in Machine Learning Engineering, \n especially in LLM inference & evaluation. Open to connect!",
     emailText: "Email Me"
   },
 
@@ -98,13 +98,13 @@ export const config = {
     codeFont: "'Fira Code', monospace",
     
     // 头像大小控制 (默认 160px)
-    avatarSize: "300px",
+    avatarSize: "200px",
 
     // 3. 各模块独立样式覆盖
     moduleOverrides: {
       home: {
         fontFamily: "'Inter', sans-serif",
-        fontSize: "2rem", 
+        fontSize: "1rem", 
       },
       about: {
         fontFamily: "'Inter', sans-serif",
@@ -120,7 +120,7 @@ export const config = {
       },
       teaching: {
         fontFamily: "'Inter', sans-serif",
-        fontSize: "0.95rem",
+        fontSize: "1rem",
       },
       contact: {
         fontFamily: "'Inter', sans-serif",
