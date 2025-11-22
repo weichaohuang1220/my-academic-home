@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading...</title>
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/assets/styles/main.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">Loading...</a>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- 可以保留硬编码的外链，也可以通过config生成，这里保留硬编码GitHub以便快速访问 -->
+        <li><a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="container hero-content">
+      <p class="mono highlight">Hello, my name is</p>
+      <h1 id="hero-name">Loading...</h1>
+      <div id="typing-text" class="typing-effect"></div>
+      
+      <p class="text-muted" id="hero-desc"></p>
+
+      <div class="social-links">
+        <!-- JS will populate links -->
+      </div>
+      
+      <br>
+      <a href="#" id="cv-btn" class="btn" target="_blank"><i class="fas fa-file-alt"></i> Download CV</a>
+    </div>
+  </header>
+
+  <!-- About / Research Interests -->
+  <section id="about">
+    <div class="container">
+      <h2>About & Interests</h2>
+      <p id="about-desc"></p>
+      
+      <div id="interests-grid" class="interests-grid">
+        <!-- JS will populate interests -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <div class="container">
+      <h2>Selected Publications</h2>
+      
+      <div id="pub-list" class="pub-list">
+        <!-- JS will populate publications -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (Preview) -->
+  <section id="projects">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      
+      <div id="featured-projects">
+        <!-- JS will populate featured projects -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching / Service -->
+  <section id="teaching">
+    <div class="container">
+      <h2>Teaching & Service</h2>
+      <ul id="teaching-list">
+        <!-- JS will populate teaching -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Footer -->
+  <section id="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p id="contact-text" style="max-width: 500px; margin-bottom: 2rem;"></p>
+      <a href="#" id="email-btn" class="btn">Say Hello</a>
+    </div>
+  </section>
+
+
+
+  <!-- Main Script -->
+  <script type="module" src="/assets/scripts/main.js"></script>
+</body>
+</html>
