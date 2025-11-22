@@ -1,32 +1,33 @@
 export const config = {
-
+  // --- 基础信息 ---
   profile: {
     name: "Weichao Huang",
     title: "Weichao Huang | Home",
     logoText: "Weichao.H",
     firstName: "Weichao",
     lastName: "Huang",
-    cvLink: "assets/Weichao Huang - CV.pdf" 
+    cvLink: "assets/Weichao Huang - CV.pdf",
+    avatar: "assets/avatar.jpg" 
   },
 
-
+  // --- 社交链接 ---
   social: [
     { icon: "fas fa-envelope", link: "mailto:Weichaohuang1220@gmail.com" },
     { icon: "fab fa-linkedin", link: "https://www.linkedin.com/in/weichao-huang-36079b296" },
     { icon: "fab fa-github", link: "https://github.com/weichaohuang1220" }
   ],
 
-
+  // --- Hero Section 打字机文字 ---
   typingRoles: [
     "Master Student in CS @ Johns Hopkins University",
     "Software Engineer Intern",
     "LLM Inference Researcher"
   ],
 
-
+  // --- Hero 简介 ---
   heroDesc: `I am a Master's student in Computer Science at <strong>Johns Hopkins University</strong>. I am passionate about <strong>LLM Inference</strong>, <strong>Distributed Systems</strong>, and Multimodal Speech Recognition.`,
 
-
+  // --- 关于我 ---
   about: {
     desc: `I received my Bachelor of Arts in Computer Science from the <strong>University of Minnesota, Twin Cities</strong> (GPA 3.65). 
     Currently, I am pursuing my Master of Science in Engineering in Computer Science at <strong>Johns Hopkins University</strong>. 
@@ -38,10 +39,10 @@ export const config = {
     ]
   },
 
-
+  // --- 论文发表 ---
   publications: [],
 
-
+  // --- 项目列表 ---
   projects: [
     {
       title: "Distributed KV Cache",
@@ -72,34 +73,38 @@ export const config = {
     }
   ],
 
-
+  // --- 经历 / 服务 ---
   teaching: [
     "<strong>Software Engineer Intern</strong>, Bytefinger.Inc (Jan 2024 - Dec 2025)",
     "<strong>Relevant Coursework</strong>: Distributed Systems, Deep Learning, Cloud Computing",
     "<strong>Skills</strong>: Java, Go, Python, C++, SpringBoot, React, Vue.js, PyTorch"
   ],
   
-
+  // --- 联系信息 ---
   contact: {
     text: "I am actively looking for roles in Machine Learning Engineering, especially in LLM inference & evaluation. Open to connect!",
     emailText: "Email Me"
   },
 
-
+  // =======================================================================
+  // --- 样式主题配置 (Theme Configuration) ---
+  // =======================================================================
   theme: {
-
+    // 1. Google Fonts 链接
     googleFontsLink: "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap",
 
-
+    // 2. 全局默认字体
     mainFont: "'Inter', sans-serif",
     codeFont: "'Fira Code', monospace",
-
     
+    // 头像大小控制 (默认 160px)
+    avatarSize: "300px",
+
+    // 3. 各模块独立样式覆盖
     moduleOverrides: {
       home: {
         fontFamily: "'Inter', sans-serif",
-        fontSize: "1rem", 
-
+        fontSize: "2rem", 
       },
       about: {
         fontFamily: "'Inter', sans-serif",
@@ -115,7 +120,7 @@ export const config = {
       },
       teaching: {
         fontFamily: "'Inter', sans-serif",
-        fontSize: "0.95rem", 
+        fontSize: "0.95rem",
       },
       contact: {
         fontFamily: "'Inter', sans-serif",

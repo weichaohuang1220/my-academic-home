@@ -1,3 +1,23 @@
+
+.hero-avatar {
+  width: 160px;       /* 宽度 */
+  height: 160px;      /* 高度 */
+  border-radius: 50%; /* 正圆 */
+  object-fit: cover;  /* 防止图片变形 */
+  border: 3px solid var(--accent-color); /* 霓虹色边框 */
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); /* 科技感发光 */
+  transition: transform 0.3s ease;
+  display: none; /* 默认隐藏，JS加载图片后会显示 */
+}
+
+.hero-avatar[src] {
+  display: block; /* 有图片资源时才显示 */
+}
+
+.hero-avatar:hover {
+  transform: scale(1.05) rotate(3deg); /* 鼠标悬停特效 */
+}
 /* --- Variables & Theme --- */
 :root {
   --bg-color: #0f172a;       /* Deep Slate Blue */

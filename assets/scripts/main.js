@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractions();
 });
 
-
+// --- 增强版主题样式应用逻辑 ---
 function applyTheme() {
   const theme = config.theme;
   if (!theme) return;
 
-
+  // 1. 动态注入 Google Fonts 链接
   if (theme.googleFontsLink) {
     const link = document.createElement('link');
     link.href = theme.googleFontsLink;
@@ -19,7 +19,7 @@ function applyTheme() {
     document.head.appendChild(link);
   }
 
-
+  // 2. 生成并注入自定义 CSS
   const style = document.createElement('style');
   let css = `
     :root {
@@ -29,16 +29,26 @@ function applyTheme() {
     body { font-family: var(--font-main); }
   `;
 
+  // ✅ 新增：头像大小覆盖逻辑
+  if (theme.avatarSize) {
+    css += `
+      .hero-avatar {
+        width: ${theme.avatarSize} !important;
+        height: ${theme.avatarSize} !important;
+      }
+    `;
+  }
 
+  // 3. 处理模块级覆盖 (Module Overrides)
   if (theme.moduleOverrides) {
     for (const [id, styles] of Object.entries(theme.moduleOverrides)) {
-     
+      // 映射 id 到 CSS 选择器
       let selector = `#${id}`;
       if (id === 'projects') {
         selector = `#projects, #all-projects-grid`;
       }
 
-
+      // 构建样式规则
       let rules = '';
       if (styles.fontFamily) rules += `font-family: ${styles.fontFamily} !important;`;
       if (styles.fontSize) rules += `font-size: ${styles.fontSize} !important;`;
@@ -55,7 +65,7 @@ function applyTheme() {
     }
   }
 
-
+  // 4. 强制代码字体
   css += `
     .mono, .pub-year, .btn, code { font-family: var(--font-mono) !important; }
   `;
@@ -64,20 +74,27 @@ function applyTheme() {
   document.head.appendChild(style);
 }
 
-
+// --- 核心渲染逻辑 ---
 function renderContent() {
-
+  // 1. 设置网页标题和 Logo
   document.title = config.profile.title;
   const logos = document.querySelectorAll('.logo');
   logos.forEach(logo => logo.textContent = `<${config.profile.logoText} />`);
 
-
+  // 2. 渲染 Hero Section
   const heroName = document.getElementById('hero-name');
   if (heroName) {
+    // 渲染头像逻辑
+    const avatarImg = document.getElementById('hero-avatar');
+    if (avatarImg && config.profile.avatar) {
+      avatarImg.src = config.profile.avatar;
+      avatarImg.alt = config.profile.name;
+    }
+
     heroName.textContent = `${config.profile.firstName} ${config.profile.lastName}.`;
     document.getElementById('hero-desc').innerHTML = config.heroDesc;
     
-
+    // 渲染社交链接
     const socialContainer = document.querySelector('.social-links');
     if (socialContainer) {
       socialContainer.innerHTML = config.social.map(s => 
@@ -85,15 +102,15 @@ function renderContent() {
       ).join('');
     }
     
-
+    // CV 按钮链接
     const cvBtn = document.getElementById('cv-btn');
     if (cvBtn) cvBtn.setAttribute('href', config.profile.cvLink);
     
-
+    // 启动打字机
     initTypewriter(config.typingRoles);
   }
 
-
+  // 3. 渲染 About
   const aboutDesc = document.getElementById('about-desc');
   if (aboutDesc) {
     aboutDesc.innerHTML = config.about.desc;
@@ -109,7 +126,7 @@ function renderContent() {
     }
   }
 
-
+  // 4. 渲染 Publications
   const pubList = document.getElementById('pub-list');
   if (pubList) {
     pubList.innerHTML = config.publications.length > 0 
@@ -131,10 +148,9 @@ function renderContent() {
       : '<p class="text-muted">No publications yet.</p>';
   }
 
-
+  // 5. 渲染 Projects
   const featuredContainer = document.getElementById('featured-projects');
   const allProjectsContainer = document.getElementById('all-projects-grid');
-
 
   if (featuredContainer) {
     featuredContainer.innerHTML = config.projects
@@ -152,7 +168,6 @@ function renderContent() {
       </div>`;
   }
 
-
   if (allProjectsContainer) {
     allProjectsContainer.innerHTML = config.projects.map(p => `
       <div class="interest-item">
@@ -169,13 +184,13 @@ function renderContent() {
     `).join('');
   }
 
-
+  // 6. 渲染 Teaching
   const teachingList = document.getElementById('teaching-list');
   if (teachingList) {
     teachingList.innerHTML = config.teaching.map(t => `<li>${t}</li>`).join('');
   }
 
-
+  // 7. 渲染 Contact
   const contactText = document.getElementById('contact-text');
   if (contactText) {
     contactText.textContent = config.contact.text;
@@ -187,9 +202,9 @@ function renderContent() {
   }
 }
 
-
+// --- 交互逻辑 ---
 function initInteractions() {
-
+  // Mobile Menu
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (menuToggle) {
@@ -200,7 +215,7 @@ function initInteractions() {
     });
   }
 
-  // Smooth Scroll Highlighting
+  // Smooth Scroll
   const sections = document.querySelectorAll('section');
   const navItems = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -213,15 +228,14 @@ function initInteractions() {
     navItems.forEach(li => {
       li.classList.remove('active');
       const href = li.getAttribute('href');
-
-      if (href.includes('#') && href.includes(current) && current !== '') {
+      if (href && href.includes(current) && current !== '') {
         li.classList.add('active');
       }
     });
   });
 }
 
-
+// Typewriter Utility
 function initTypewriter(roles) {
   const typingElement = document.getElementById('typing-text');
   if (!typingElement) return;
